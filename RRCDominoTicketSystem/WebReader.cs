@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -15,9 +16,7 @@ namespace RRCDominoTicketSystem
 
             WebClient client = new WebClient();
             string htmlCode = client.DownloadString(SecretClass.GetURL(code));
-
-            htmlCode = htmlCode.Replace("<pre></pre>", "");
-
+            Debug.WriteLine(htmlCode);
             return htmlCode;
 
         }

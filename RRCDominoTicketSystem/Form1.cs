@@ -33,49 +33,77 @@ namespace RRCDominoTicketSystem
             string json = WebReader.Read(code);
             JObject obj = JObject.Parse(json);
 
-            if (((string)obj["TicketPerson"]) == null)
+            // Bad password
+            if(((int)obj["status"]) == 401)
             {
                 label10.BackColor = Color.Red;
-                label10.Text = "Vstupenka neexistuje";
-                MessageBox.Show("Bohuzel tato vstupenka neexistuje.\nCode: " + code);
-                return;
+                label10.Text = "Nejste opravnen nahlizet na listky";
             }
-
-            if (((string)obj["TicketCanceled"]) == null)
+            else if (((int)obj["status"]) == 402)
             {
-                if (((string)obj["TicketValidate"]) == null)
-                {
-                    label10.BackColor = Color.Lime;
-                    label10.Text = "Listek pouzit";
+                label10.BackColor = Color.Red;
+                label10.Text = "Spatny pocet zadanych parametru";
+            }
+            else if (((int)obj["status"]) == 404)
+            {
+                label10.BackColor = Color.Red;
+                label10.Text = "Neexistujici listek - neexistuje v databazi / spatne nacten";
+            }
+            else if (((int)obj["status"]) == 202)
+            {
 
+                if (((string)obj["ticket_person"]) == null)
+                {
+                    label10.BackColor = Color.Red;
+                    label10.Text = "Vstupenka neexistuje";
+                    MessageBox.Show("Bohuzel tato vstupenka neexistuje.\nCode: " + code);
+                    return;
+                }
+
+                if (((string)obj["ticket_cancelet" /* TODO - Fix cancelet > canceled in RestAPI*/]) == null)
+                {
+                    if (((string)obj["ticket_validate"]) == null)
+                    {
+                        label10.BackColor = Color.Lime;
+                        label10.Text = "Listek pouzit";
+
+                    }
+                    else
+                    {
+                        label10.BackColor = Color.Red;
+                        label10.Text = "Listek jiz pouzit";
+                        textBox3.Text = ((DateTime)obj["ticket_validate"]).ToString("dd.MM.yyyy HH:mm:ss");
+                    }
                 }
                 else
                 {
                     label10.BackColor = Color.Red;
-                    label10.Text = "Listek jiz pouzit";
-                    textBox3.Text = ((DateTime)obj["TicketValidate"]).ToString("dd.MM.yyyy HH:mm:ss");
+                    label10.Text = "Listek byl zrusen";
+                    textBox4.Text = ((DateTime)obj["ticket_cancelet" /* TODO - Fix cancelet > canceled in RestAPI*/]).ToString("dd.MM.yyyy HH:mm:ss");
                 }
-            }
-            else
-            {
-                label10.BackColor = Color.Red;
-                label10.Text = "Listek byl zrusen";
-                textBox4.Text = ((DateTime)obj["TicketCanceled"]).ToString("dd.MM.yyyy HH:mm:ss");
+
+                switch ((int)obj["ticket_type"])
+                {
+                    case 1:
+                        textBox5.Text = "Detsky listek do 10 let (online)";
+                        break;
+                    case 2:
+                        textBox5.Text = "Listek pro dospeleho (online)";
+                        break;
+                    case 3:
+                        textBox5.Text = "Detsky listek do 10 let (na miste)";
+                        break;
+                    case 4:
+                        textBox5.Text = "Listek pro dospeleho (na miste)";
+                        break;
+                    default:
+                        textBox5.Text = "Something wen't wrong!";
+                        break;
+                }
+                textBox6.Text = (string)obj["ticket_person"];
+
             }
 
-            switch ((int)obj["TicketType"])
-            {
-                case 1:
-                    textBox5.Text = "Detsky listek do 10 let";
-                    break;
-                case 2:
-                    textBox5.Text = "Listek pro dospeleho";
-                    break;
-                default:
-                    textBox5.Text = "Something wen't wrong!";
-                    break;
-            }
-            textBox6.Text = (string)obj["TicketPerson"];
         }
 
         public Form1()
