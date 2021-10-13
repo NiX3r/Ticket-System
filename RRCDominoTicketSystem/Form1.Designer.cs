@@ -63,6 +63,8 @@ namespace RRCDominoTicketSystem
             this.label12 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel2.SuspendLayout();
@@ -153,6 +155,8 @@ namespace RRCDominoTicketSystem
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.checkBox2);
+            this.panel2.Controls.Add(this.checkBox1);
             this.panel2.Controls.Add(this.textBox2);
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.textBox1);
@@ -248,7 +252,7 @@ namespace RRCDominoTicketSystem
             this.button4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(30)))), ((int)(((byte)(36)))));
             this.button4.Location = new System.Drawing.Point(22, 287);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(312, 37);
+            this.button4.Size = new System.Drawing.Size(237, 37);
             this.button4.TabIndex = 52;
             this.button4.Text = "Nacist";
             this.button4.UseVisualStyleBackColor = false;
@@ -293,7 +297,7 @@ namespace RRCDominoTicketSystem
             this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(30)))), ((int)(((byte)(36)))));
             this.button3.Location = new System.Drawing.Point(22, 113);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(312, 37);
+            this.button3.Size = new System.Drawing.Size(237, 37);
             this.button3.TabIndex = 2;
             this.button3.Text = "Skenovat";
             this.button3.UseVisualStyleBackColor = false;
@@ -478,6 +482,34 @@ namespace RRCDominoTicketSystem
             this.pictureBox2.TabIndex = 13;
             this.pictureBox2.TabStop = false;
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.checkBox1.Location = new System.Drawing.Point(276, 116);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(58, 34);
+            this.checkBox1.TabIndex = 53;
+            this.checkBox1.Text = "Pouze\r\nnacist";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Checked = true;
+            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox2.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.checkBox2.Location = new System.Drawing.Point(276, 290);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(58, 34);
+            this.checkBox2.TabIndex = 54;
+            this.checkBox2.Text = "Pouze\r\nnacist";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -542,6 +574,8 @@ namespace RRCDominoTicketSystem
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 

@@ -25,12 +25,12 @@ namespace RRCDominoTicketSystem
         private VideoCaptureDevice FinalFrame;
         private string code;
 
-        public delegate void updateDataDelegate();
+        public delegate void updateDataDelegate(bool onlyRead);
         public updateDataDelegate updateData;
-        void updateDataMethod() 
+        void updateDataMethod(bool onlyRead) 
         {
 
-            string json = WebReader.Read(code);
+            string json = WebReader.Read(code, onlyRead);
             JObject obj = JObject.Parse(json);
 
             // Bad password
@@ -60,7 +60,7 @@ namespace RRCDominoTicketSystem
                     return;
                 }
 
-                if (((string)obj["ticket_cancelet" /* TODO - Fix cancelet > canceled in RestAPI*/]) == null)
+                if (((string)obj["ticket_canceled"]) == null)
                 {
                     if (((string)obj["ticket_validate"]) == null)
                     {
@@ -79,7 +79,7 @@ namespace RRCDominoTicketSystem
                 {
                     label10.BackColor = Color.Red;
                     label10.Text = "Listek byl zrusen";
-                    textBox4.Text = ((DateTime)obj["ticket_cancelet" /* TODO - Fix cancelet > canceled in RestAPI*/]).ToString("dd.MM.yyyy HH:mm:ss");
+                    textBox4.Text = ((DateTime)obj["ticket_canceled"]).ToString("dd.MM.yyyy HH:mm:ss");
                 }
 
                 switch ((int)obj["ticket_type"])
@@ -148,7 +148,7 @@ namespace RRCDominoTicketSystem
                 }
                 code = decoded;
                 label5.Text = "QR Kod nalezen";
-                updateData(); 
+                updateData(checkBox1.Checked); 
                 button3.Text = "Skenovat";
 
             }
@@ -222,9 +222,10 @@ namespace RRCDominoTicketSystem
         {
             if(!textBox1.Text.Equals("") && !textBox2.Text.Equals(""))
             {
+                textBox3.Text = textBox4.Text = textBox5.Text = textBox6.Text = "";
                 label6.Text = "Nacitam...";
                 code = textBox1.Text + "-" + textBox2.Text;
-                updateData();
+                updateData(checkBox2.Checked);
                 label6.Text = "Nacteno";
             }
         }

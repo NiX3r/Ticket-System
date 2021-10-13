@@ -11,12 +11,11 @@ namespace RRCDominoTicketSystem
     class WebReader
     {
 
-        public static string Read(string code)
+        public static string Read(string code, bool readOnly)
         {
 
             WebClient client = new WebClient();
-            string htmlCode = client.DownloadString(SecretClass.GetURL(code));
-            Debug.WriteLine(htmlCode);
+            string htmlCode = client.DownloadString(SecretClass.GetURL(code, readOnly));
             return htmlCode;
 
         }
