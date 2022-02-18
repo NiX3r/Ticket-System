@@ -62,7 +62,7 @@ namespace RRCDominoTicketSystem
 
                 if (((string)obj["ticket_canceled"]) == null)
                 {
-                    if (((string)obj["ticket_validate"]) == null)
+                    if (((string)obj["ticket_validated"]) == null)
                     {
                         label10.BackColor = Color.Lime;
                         label10.Text = "Listek pouzit";
@@ -72,7 +72,7 @@ namespace RRCDominoTicketSystem
                     {
                         label10.BackColor = Color.Red;
                         label10.Text = "Listek jiz pouzit";
-                        textBox3.Text = ((DateTime)obj["ticket_validate"]).ToString("dd.MM.yyyy HH:mm:ss");
+                        textBox3.Text = ((DateTime)obj["ticket_validated"]).ToString("dd.MM.yyyy HH:mm:ss");
                     }
                 }
                 else
@@ -82,25 +82,10 @@ namespace RRCDominoTicketSystem
                     textBox4.Text = ((DateTime)obj["ticket_canceled"]).ToString("dd.MM.yyyy HH:mm:ss");
                 }
 
-                switch ((int)obj["ticket_type"])
-                {
-                    case 1:
-                        textBox5.Text = "Detsky listek do 10 let (online)";
-                        break;
-                    case 2:
-                        textBox5.Text = "Listek pro dospeleho (online)";
-                        break;
-                    case 3:
-                        textBox5.Text = "Detsky listek do 10 let (na miste)";
-                        break;
-                    case 4:
-                        textBox5.Text = "Listek pro dospeleho (na miste)";
-                        break;
-                    default:
-                        textBox5.Text = "Something wen't wrong!";
-                        break;
-                }
+                textBox5.Text = (string)obj["ticket_type"];
                 textBox6.Text = (string)obj["ticket_person"];
+                textBox7.Text = obj["ticket_table"].ToString();
+                textBox8.Text = obj["ticket_chair"].ToString();
 
             }
 
@@ -109,6 +94,9 @@ namespace RRCDominoTicketSystem
         public Form1()
         {
             InitializeComponent();
+
+            this.KeyPreview = true;
+            this.KeyPress += KeyPressHandler;
 
             updateData = new updateDataDelegate(updateDataMethod);
 
@@ -128,6 +116,26 @@ namespace RRCDominoTicketSystem
                 listBox1.SetSelected(0, true);
             label6.Text = "Cekam...";
 
+        }
+
+        private void KeyPressHandler(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                button3_Click(null, null);
+            }
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.F1)
+            {
+                button3_Click(null, null);
+                return true;    // indicate that you handled this keystroke
+            }
+
+            // Call the base class
+            return base.ProcessCmdKey(ref msg, keyData);
         }
 
         private void FinalFrame_NewFrame(object sender, NewFrameEventArgs eventArgs)
@@ -179,22 +187,25 @@ namespace RRCDominoTicketSystem
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (button3.Text.Equals("Skenovat"))
+            if (button3.Enabled)
             {
-                button3.Text = "Stop sken";
-                label5.Text = "Nacitam QR kod...";
-                textBox3.Text = textBox4.Text = textBox5.Text = textBox6.Text = "";
-                label10.BackColor = Color.FromArgb(44, 44, 44);
-                label10.Text = "cekam...";
-                FinalFrame = new VideoCaptureDevice(CaptureDevice[listBox1.SelectedIndex].MonikerString);
-                FinalFrame.NewFrame += new NewFrameEventHandler(FinalFrame_NewFrame);
-                FinalFrame.Start();
-            }
-            else if(button3.Text.Equals("Stop sken"))
-            {
-                exitcamera();
-                button3.Text = "Skenovat";
-                label10.BackColor = Color.FromArgb(44,44,44);
+                if (button3.Text.Equals("Skenovat"))
+                {
+                    button3.Text = "Stop sken";
+                    label5.Text = "Nacitam QR kod...";
+                    textBox3.Text = textBox4.Text = textBox5.Text = textBox6.Text = textBox7.Text = textBox8.Text = "";
+                    label10.BackColor = Color.FromArgb(44, 44, 44);
+                    label10.Text = "cekam...";
+                    FinalFrame = new VideoCaptureDevice(CaptureDevice[listBox1.SelectedIndex].MonikerString);
+                    FinalFrame.NewFrame += new NewFrameEventHandler(FinalFrame_NewFrame);
+                    FinalFrame.Start();
+                }
+                else if (button3.Text.Equals("Stop sken"))
+                {
+                    exitcamera();
+                    button3.Text = "Skenovat";
+                    label10.BackColor = Color.FromArgb(44, 44, 44);
+                }
             }
         }
 
@@ -222,7 +233,7 @@ namespace RRCDominoTicketSystem
         {
             if(!textBox1.Text.Equals("") && !textBox2.Text.Equals(""))
             {
-                textBox3.Text = textBox4.Text = textBox5.Text = textBox6.Text = "";
+                textBox3.Text = textBox4.Text = textBox5.Text = textBox6.Text = textBox7.Text = textBox8.Text =  "";
                 label6.Text = "Nacitam...";
                 code = textBox1.Text + "-" + textBox2.Text;
                 updateData(checkBox2.Checked);

@@ -37,6 +37,8 @@ namespace RRCDominoTicketSystem
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -63,8 +65,10 @@ namespace RRCDominoTicketSystem
             this.label12 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel2.SuspendLayout();
@@ -109,7 +113,7 @@ namespace RRCDominoTicketSystem
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(63, 13);
             this.label2.TabIndex = 2;
-            this.label2.Text = "verze: 0.0.1";
+            this.label2.Text = "verze: 1.2.0";
             // 
             // label1
             // 
@@ -132,7 +136,8 @@ namespace RRCDominoTicketSystem
             this.button2.Location = new System.Drawing.Point(730, 0);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(35, 35);
-            this.button2.TabIndex = 2;
+            this.button2.TabIndex = 9998;
+            this.button2.TabStop = false;
             this.button2.Text = "_";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -147,7 +152,8 @@ namespace RRCDominoTicketSystem
             this.button1.Location = new System.Drawing.Point(765, 0);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(35, 35);
-            this.button1.TabIndex = 1;
+            this.button1.TabIndex = 9999;
+            this.button1.TabStop = false;
             this.button1.Text = "X";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -175,6 +181,34 @@ namespace RRCDominoTicketSystem
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(360, 520);
             this.panel2.TabIndex = 2;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Checked = true;
+            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox2.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.checkBox2.Location = new System.Drawing.Point(276, 290);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(58, 34);
+            this.checkBox2.TabIndex = 54;
+            this.checkBox2.Text = "Pouze\r\nnacist";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.checkBox1.Location = new System.Drawing.Point(276, 116);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(58, 34);
+            this.checkBox1.TabIndex = 53;
+            this.checkBox1.Text = "Pouze\r\nnacist";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // textBox2
             // 
@@ -342,6 +376,10 @@ namespace RRCDominoTicketSystem
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.textBox8);
+            this.panel3.Controls.Add(this.label16);
+            this.panel3.Controls.Add(this.textBox7);
+            this.panel3.Controls.Add(this.label11);
             this.panel3.Controls.Add(this.textBox6);
             this.panel3.Controls.Add(this.label15);
             this.panel3.Controls.Add(this.textBox5);
@@ -351,9 +389,9 @@ namespace RRCDominoTicketSystem
             this.panel3.Controls.Add(this.textBox3);
             this.panel3.Controls.Add(this.label10);
             this.panel3.Controls.Add(this.label12);
-            this.panel3.Location = new System.Drawing.Point(420, 334);
+            this.panel3.Location = new System.Drawing.Point(420, 307);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(360, 244);
+            this.panel3.Size = new System.Drawing.Size(360, 271);
             this.panel3.TabIndex = 3;
             // 
             // textBox6
@@ -470,45 +508,65 @@ namespace RRCDominoTicketSystem
             this.panel5.Controls.Add(this.pictureBox2);
             this.panel5.Location = new System.Drawing.Point(420, 58);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(360, 244);
+            this.panel5.Size = new System.Drawing.Size(360, 212);
             this.panel5.TabIndex = 4;
             // 
             // pictureBox2
             // 
             this.pictureBox2.Location = new System.Drawing.Point(22, 20);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(314, 200);
+            this.pictureBox2.Size = new System.Drawing.Size(314, 169);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 13;
             this.pictureBox2.TabStop = false;
             // 
-            // checkBox1
+            // textBox7
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.checkBox1.Location = new System.Drawing.Point(276, 116);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(58, 34);
-            this.checkBox1.TabIndex = 53;
-            this.checkBox1.Text = "Pouze\r\nnacist";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.textBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox7.Enabled = false;
+            this.textBox7.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold);
+            this.textBox7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.textBox7.Location = new System.Drawing.Point(61, 230);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.ReadOnly = true;
+            this.textBox7.Size = new System.Drawing.Size(103, 16);
+            this.textBox7.TabIndex = 21;
             // 
-            // checkBox2
+            // label11
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Checked = true;
-            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox2.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.checkBox2.Location = new System.Drawing.Point(276, 290);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(58, 34);
-            this.checkBox2.TabIndex = 54;
-            this.checkBox2.Text = "Pouze\r\nnacist";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(30)))), ((int)(((byte)(36)))));
+            this.label11.Location = new System.Drawing.Point(19, 228);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(32, 17);
+            this.label11.TabIndex = 22;
+            this.label11.Text = "Stul";
+            // 
+            // textBox8
+            // 
+            this.textBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox8.Enabled = false;
+            this.textBox8.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold);
+            this.textBox8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.textBox8.Location = new System.Drawing.Point(233, 229);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.ReadOnly = true;
+            this.textBox8.Size = new System.Drawing.Size(103, 16);
+            this.textBox8.TabIndex = 23;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(30)))), ((int)(((byte)(36)))));
+            this.label16.Location = new System.Drawing.Point(186, 227);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(39, 17);
+            this.label16.TabIndex = 24;
+            this.label16.Text = "Zidle";
             // 
             // Form1
             // 
@@ -576,6 +634,10 @@ namespace RRCDominoTicketSystem
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.Label label11;
     }
 }
 
